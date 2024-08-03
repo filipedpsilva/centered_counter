@@ -13,11 +13,15 @@ main {
 	background: #bada55;
 	width: 100vw;
 	height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .controls {
 	top: 2rem;
 	left: 2rem;
+	margin: 1.5rem 0 0 1.5rem;
+	display: flex;
 }
 
 .control {
@@ -27,7 +31,7 @@ main {
 .control label {
 	display: block;
 	color: darkgreen;
-	margin-bottom:.2rem;
+	margin-bottom: .2rem;
 	text-transform: uppercase;
 }
 
@@ -36,6 +40,13 @@ main {
 	padding: .4rem .6rem;
 	border-radius: .5rem;
 	width: 3rem;
+}
+
+.button_container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-grow: 1;
 }
 
 .count_button {
@@ -48,7 +59,7 @@ main {
 }
 
 .count_button:active {
-	box-shadow: none ;
+	box-shadow: none;
 	box-shadow: 1px 1px 1px 1px #557668;
 }
 
