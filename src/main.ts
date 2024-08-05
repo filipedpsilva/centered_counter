@@ -31,13 +31,13 @@ function update_count() {
 
 count_button.addEventListener("click", update_count);
 
-function update_text_content() {
+function update_text_content(): any {
   const value = count();
   update_button_colour(value);
   current_count.textContent = value.toString();
 }
 
-function update_button_colour(value: number) {
+function update_button_colour(value: number): any {
   const positive_class = "positive";
   const negative_class = "negative";
 
