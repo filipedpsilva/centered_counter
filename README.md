@@ -56,9 +56,9 @@ npm run dev
 
 ## Extra credit
 
-- Improve accessibility.
-- Better test coverage.
-- UI tests.
-- Improve DX.
-- Add linters and formatters.
-- Have fun.
+-   Improve accessibility.
+-   Better test coverage.
+-   UI tests.
+-   Improve DX.
+-   Add linters and formatters.
+-   Have fun.

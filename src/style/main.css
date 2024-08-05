@@ -1,87 +1,87 @@
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  background: #eee;
-  font-size: 16px;
-  font-family: "Open Sans", sans-serif;
+    background: #eee;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
 }
 
 main {
-  background: #bada55;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+    background: #bada55;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .controls {
-  top: 2rem;
-  left: 2rem;
-  position: absolute;
-  display: flex;
+    top: 2rem;
+    left: 2rem;
+    position: absolute;
+    display: flex;
 }
 
 .control {
-  margin-right: 1rem;
+    margin-right: 1rem;
 }
 
 .control label {
-  display: block;
-  color: darkgreen;
-  margin-bottom: 0.2rem;
-  text-transform: uppercase;
+    display: block;
+    color: darkgreen;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
 }
 
 .control input {
-  font-size: 1.2rem;
-  padding: 0.4rem 0.6rem;
-  border-radius: 0.5rem;
-  width: 3rem;
+    font-size: 1.2rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.5rem;
+    width: 3rem;
 }
 
 .button_container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 .count_button {
-  cursor: pointer;
-  min-width: 10rem;
-  height: 10rem;
-  background: yellow;
-  border-radius: 0.4rem;
-  border: 2px solid green;
-  box-shadow: 1px 1px 4px 2px #557668;
-  transition: all 0.2s ease;
+    cursor: pointer;
+    min-width: 10rem;
+    height: 10rem;
+    background: yellow;
+    border-radius: 0.4rem;
+    border: 2px solid green;
+    box-shadow: 1px 1px 4px 2px #557668;
+    transition: all 0.2s ease;
 }
 
 .count_button.positive {
-  background: greenyellow;
+    background: greenyellow;
 }
 
 .count_button.negative {
-  background: red;
+    background: red;
 }
 
 .count_button:hover {
-  border-radius: 100%;
-  -moz-border-radius: 100%;
-  -webkit-border-radius: 100%;
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
 }
 
 .count_button:active {
-  box-shadow: none;
-  box-shadow: 1px 1px 1px 1px #557668;
+    box-shadow: none;
+    box-shadow: 1px 1px 1px 1px #557668;
 }
 
 .count_button .current_count {
-  font-size: 2rem;
-  margin: 1rem;
-  font-weight: bold;
-  color: darkgreen;
+    font-size: 2rem;
+    margin: 1rem;
+    font-weight: bold;
+    color: darkgreen;
 }
