@@ -15,9 +15,13 @@ const start_at_control = document.getElementById(
 
 const step_control = document.getElementById("step") as HTMLInputElement;
 
-start_at_control?.addEventListener("change", () => update_count_and_reset_counter());
+start_at_control?.addEventListener("change", () =>
+  update_count_and_reset_counter(),
+);
 
-step_control?.addEventListener("change", () => update_count_and_reset_counter());
+step_control?.addEventListener("change", () =>
+  update_count_and_reset_counter(),
+);
 
 const count_button = document.querySelector(
   ".count_button",
@@ -27,12 +31,11 @@ const current_count = document.querySelector(
 ) as HTMLSpanElement;
 
 function update_count() {
-
   if (factoryReset) {
     count = factory(Number(start_at_control.value), Number(step_control.value));
     factoryReset = false;
   }
-  
+
   update_text_content();
 }
 
@@ -40,5 +43,17 @@ count_button.addEventListener("click", update_count);
 
 function update_text_content() {
   const value = count();
+  update_button_colour(value);
   current_count.textContent = value.toString();
+}
+
+function update_button_colour(value: number) {
+  if (value > 0) {
+    count_button.classList.add("positive");
+  } else if (value < 0) {
+    count_button.classList.add("negative");
+  } else {
+    count_button.classList.remove("positive");
+    count_button.classList.remove("negative");
+  }
 }
