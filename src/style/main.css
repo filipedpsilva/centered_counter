@@ -61,11 +61,11 @@ main {
 }
 
 .count_button.positive {
-    background: greenyellow;
+    background: greenyellow; /* rgb(173, 255, 47) */
 }
 
 .count_button.negative {
-    background: red;
+    background: red; /* rgb(255, 0, 0) */
 }
 
 .count_button:hover {
