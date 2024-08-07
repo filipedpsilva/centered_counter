@@ -1,27 +1,58 @@
 import { factory } from "./factory";
 
 let count = factory(0, 1);
+let factoryReset = true;
 
-function update_count_and_reset_counter() {}
+function update_count_and_reset_counter(): void {
+  count = factory(0, 0);
+  factoryReset = true;
+  update_text_content();
+}
 
-const start_at_control = document.getElementById(
-  "start_at",
-) as HTMLInputElement;
+const start_at_control = document.getElementById("start_at") as HTMLInputElement;
 
 const step_control = document.getElementById("step") as HTMLInputElement;
 
-start_at_control?.addEventListener("change", () => {});
+start_at_control?.addEventListener("change", () => update_count_and_reset_counter());
 
-step_control?.addEventListener("change", () => {});
+step_control?.addEventListener("change", () => update_count_and_reset_counter());
 
-const count_button = document.querySelector(
-  ".count_button",
-) as HTMLButtonElement;
+const count_button = document.querySelector(".count_button") as HTMLButtonElement;
+const current_count = document.querySelector(".current_count") as HTMLSpanElement;
 
-const current_count = document.querySelector(
-  ".current_count",
-) as HTMLSpanElement;
+function update_count(): void {
+  if (factoryReset) {
+    count = factory(Number(start_at_control.value), Number(step_control.value));
+    factoryReset = false;
+  }
 
-function update_count() {}
+  update_text_content();
+}
 
-count_button.addEventListener("click", update_count);
+count_button?.addEventListener("click", update_count);
+
+function update_text_content(): void {
+  const value = count();
+  update_button_colour(value);
+  current_count.textContent = value.toString();
+}
+
+function update_button_colour(value: number): void {
+  const positive_class = "positive";
+  const negative_class = "negative";
+
+  if (value > 0) {
+    count_button?.classList.add(positive_class);
+    count_button?.classList.contains(negative_class) &&
+      count_button?.classList.remove(negative_class);
+  } else if (value < 0) {
+    count_button?.classList.add(negative_class);
+    count_button?.classList.contains(positive_class) &&
+      count_button?.classList.remove(positive_class);
+  } else {
+    count_button?.classList.contains(negative_class) &&
+      count_button?.classList.remove(negative_class);
+    count_button?.classList.contains(positive_class) &&
+      count_button?.classList.remove(positive_class);
+  }
+}
