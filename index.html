@@ -1,32 +1,35 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="/src/style/main.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Filipe Silva | Centered counter</title>
-    </head>
 
-    <body>
-        <main>
-            <div class="controls">
-                <div class="control">
-                    <label for="start_at">Start at</label>
-                    <input name="start_at" value="0" id="start_at" />
-                </div>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/style/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filipe Silva | Centered counter</title>
+    <link href="./vite.svg" rel="icon" type="image/x-icon" />
+</head>
 
-                <div class="control">
-                    <label for="step">Step</label>
-                    <input name="step" value="1" id="step" />
-                </div>
+<body>
+    <main>
+        <div class="controls">
+            <div class="control">
+                <label for="start_at" id="start_at_label">Start at</label>
+                <input type="text" name="start_at" value="0" id="start_at" alt="the 'Start at' input" />
             </div>
 
-            <div class="button_container">
-                <button class="count_button">
-                    <span class="current_count"> 0 </span>
-                </button>
+            <div class="control">
+                <label for="step" id="step_label">Step</label>
+                <input type="text" name="step" value="1" id="step" alt="the 'Step' input" />
             </div>
-        </main>
-        <script type="module" src="/src/main.ts"></script>
-    </body>
+        </div>
+
+        <div class="button_container">
+            <button class="count_button">
+                <span class="current_count"> 0 </span>
+            </button>
+        </div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>

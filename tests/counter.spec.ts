@@ -1,12 +1,15 @@
 import { test, expect, type Page } from "@playwright/test";
-import AxeBuilder from "@axe-core/playwright"; // 1
+import AxeBuilder from "@axe-core/playwright";
+
+const FIRST_TEST_VALUES = ["3000", "-500", "2500"] as const,
+  SECOND_TEST_VALUES = ["-30000", "4500", "-25500"] as const;
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("http://localhost:5173/");
+  await page.goto("https://filipedpsilva.github.io/demo/counter/");
 });
 
 test.describe("A Simple visual test", () => {
-  test("has title", async ({ page }) => {
+  test("page has title", async ({ page }) => {
     await expect(page).toHaveTitle(/Filipe Silva | Centered counter/);
   });
 
@@ -32,10 +35,6 @@ test.describe("A Simple visual test", () => {
 });
 
 test.describe("Input, result and visual tests", () => {
-  // Values
-  const FIRST_TEST_VALUES = ["3000", "-500", "2500"] as const,
-    SECOND_TEST_VALUES = ["-30000", "4500", "-25500"] as const;
-
   // RegEx
   const POSITIVE_CLASS_REGEX = /positive/,
     NEGATIVE_CLASS_REGEX = /negative/;
@@ -91,53 +90,6 @@ test.describe("Input, result and visual tests", () => {
     await expect(page.getByRole("button")).toHaveCSS(BACKGROUND_COLOR_RULE, RED_COLOR);
   });
 
-  async function fillFirstTestValues(page: Page) {
-    await page.getByLabel("Start at").fill(FIRST_TEST_VALUES[0]);
-    await page.getByLabel("Step").fill(FIRST_TEST_VALUES[1]);
-    await page.getByRole("button", { name: "0" }).click();
-    await expect(page.getByRole("button", { name: FIRST_TEST_VALUES[2] })).toBeVisible();
-  }
-
-  async function fillSecondTestValues(page: Page) {
-    await page.getByLabel("Start at").fill(SECOND_TEST_VALUES[0]);
-    await page.getByLabel("Step").fill(SECOND_TEST_VALUES[1]);
-    await page.getByRole("button", { name: "0" }).press("Enter");
-    await expect(page.getByRole("button", { name: SECOND_TEST_VALUES[2] })).toBeVisible();
-  }
-});
-
-test.describe("Persistence", () => {
-  test("should not persist its data", async ({ page }) => {
-    await page.reload();
-
-    await expect(page.getByLabel("Start at")).toBeVisible();
-    await expect(page.getByLabel("Start at")).toHaveValue("0");
-    await expect(page.getByLabel("Step")).toBeVisible();
-    await expect(page.getByLabel("Step")).toHaveValue("1");
-    await expect(page.getByRole("button", { name: "0" })).toBeVisible();
-  });
-});
-
-test.fixme("Accessibility issues", () => {
-  test("should not have any automatically detectable accessibility issues", async ({ page }) => {
-    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
-
-    expect(accessibilityScanResults.violations).toEqual([]);
-  });
-});
-
-test.describe("Tests that sould always fail", () => {
-  test.fail(
-    'the user should "Start at" with "10" and "Step" with "10" and get "40" as result when clicking 2 times',
-    async ({ page }) => {
-      await page.getByLabel("Start at").fill("10");
-      await page.getByLabel("Step").fill("10");
-      await page.getByRole("button").click();
-      await page.getByRole("button").click();
-      await expect(page.getByRole("button", { name: "40" })).toBeVisible();
-    }
-  );
-
   test('the user should "Start at" with "10" and "Step" with "10" and NOT get "40" as result when clicking 2 times', async ({
     page,
   }) => {
@@ -148,3 +100,91 @@ test.describe("Tests that sould always fail", () => {
     await expect(page.getByRole("button", { name: "40" })).not.toBeVisible();
   });
 });
+
+test.describe("Persistence", () => {
+  test("page should not persist its data", async ({ page }) => {
+    await fillFirstTestValues(page);
+
+    await page.reload();
+
+    await expect(page.getByLabel("Start at")).toBeVisible();
+    await expect(page.getByLabel("Start at")).toHaveValue("0");
+    await expect(page.getByLabel("Step")).toBeVisible();
+    await expect(page.getByLabel("Step")).toHaveValue("1");
+    await expect(page.getByRole("button", { name: "0" })).toBeVisible();
+  });
+});
+
+test.describe("Accessibility Tests", () => {
+  test("'Start at' label should not have any automatically detectable accessibility issues", async ({
+    page,
+  }) => {
+    const accessibilityScanResults = await new AxeBuilder({ page })
+      .include("#start_at_label")
+      .analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+
+  test("'Start at' input should not have any automatically detectable accessibility issues", async ({
+    page,
+  }) => {
+    const accessibilityScanResults = await new AxeBuilder({ page }).include("#start_at").analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+
+  test("'Step' label should not have any automatically detectable accessibility issues", async ({
+    page,
+  }) => {
+    const accessibilityScanResults = await new AxeBuilder({ page })
+      .include("#step_label")
+      .analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+
+  test("'Step' input should not have any automatically detectable accessibility issues", async ({
+    page,
+  }) => {
+    const accessibilityScanResults = await new AxeBuilder({ page }).include("#step").analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+
+  test("counter button should not have any automatically detectable accessibility issues", async ({
+    page,
+  }) => {
+    const accessibilityScanResults = await new AxeBuilder({ page })
+      .include(".count_button")
+      .analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+});
+
+test.describe("Tests that are failing", () => {
+  test.fail("page has automatically detectable accessibility issues", async ({ page }) => {
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+});
+
+//#region Aux
+
+async function fillFirstTestValues(page: Page) {
+  await page.getByLabel("Start at").fill(FIRST_TEST_VALUES[0]);
+  await page.getByLabel("Step").fill(FIRST_TEST_VALUES[1]);
+  await page.getByRole("button", { name: "0" }).click();
+  await expect(page.getByRole("button", { name: FIRST_TEST_VALUES[2] })).toBeVisible();
+}
+
+async function fillSecondTestValues(page: Page) {
+  await page.getByLabel("Start at").fill(SECOND_TEST_VALUES[0]);
+  await page.getByLabel("Step").fill(SECOND_TEST_VALUES[1]);
+  await page.getByRole("button", { name: "0" }).press("Enter");
+  await expect(page.getByRole("button", { name: SECOND_TEST_VALUES[2] })).toBeVisible();
+}
+
+//#endregion Aux

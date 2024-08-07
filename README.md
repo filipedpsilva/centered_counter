@@ -1,5 +1,8 @@
 # Vanilla JS + CSS programming problem
 
+### This challenge is also deployed online at
+https://filipedpsilva.github.io/demo/counter/
+
 ## Requisites
 
 node
@@ -46,6 +49,12 @@ All test are passing. To run them:
 
 ```sh
 npm run test
+```
+
+To run the UI tests:
+
+```sh
+npm run ui-test
 ```
 
 To work on the code:

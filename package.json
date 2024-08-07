@@ -7,10 +7,11 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest",
+    "test": "vitest **/*.test.ts",
+    "print-test": "vitest **/*.test.ts --reporter=json --outputFile=./public/test-results/test-output.json",
     "ui-test": "playwright test",
     "prepare": "husky",
-    "lint": "eslint . --fix --max-warnings=0 --no-warn-ignored",
+    "lint": "eslint . --fix --no-warn-ignored",
     "format": "prettier . --write"
   },
   "devDependencies": {

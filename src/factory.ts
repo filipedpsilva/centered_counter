@@ -16,6 +16,8 @@ export const factory = (start?: number, step?: number): (() => number) => {
     if (start === undefined) start = 0;
     if (step === undefined) step = 1;
 
+    if (isNaN(start as number) || isNaN(step as number)) return 0;
+
     const count = start + step * counter;
     increment();
     return count;
