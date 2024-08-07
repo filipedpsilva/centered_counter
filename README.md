@@ -4,6 +4,11 @@
 
 https://filipedpsilva.github.io/demo/counter/
 
+### And the tests results here
+
+- https://filipedpsilva.github.io/demo/counter/test-results/test-output.json
+- https://filipedpsilva.github.io/demo/counter/ui-test-results/index.html
+
 ## Requisites
 
 node
