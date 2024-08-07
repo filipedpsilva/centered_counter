@@ -1,6 +1,7 @@
 # Vanilla JS + CSS programming problem
 
 ### This challenge is also deployed online at
+
 https://filipedpsilva.github.io/demo/counter/
 
 ## Requisites
