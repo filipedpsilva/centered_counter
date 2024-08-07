@@ -1,11 +1,9 @@
 import { factory } from "./factory";
 
 let count = factory(0, 1);
-let factoryReset = true;
 
 function update_count_and_reset_counter(): void {
-  count = factory(0, 0);
-  factoryReset = true;
+  count = factory(Number(start_at_control.value), Number(step_control.value));
   update_text_content();
 }
 
@@ -21,11 +19,6 @@ const count_button = document.querySelector(".count_button") as HTMLButtonElemen
 const current_count = document.querySelector(".current_count") as HTMLSpanElement;
 
 function update_count(): void {
-  if (factoryReset) {
-    count = factory(Number(start_at_control.value), Number(step_control.value));
-    factoryReset = false;
-  }
-
   update_text_content();
 }
 

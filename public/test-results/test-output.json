@@ -8,7 +8,7 @@
   "numFailedTests": 0,
   "numPendingTests": 0,
   "numTodoTests": 0,
-  "startTime": 1723061932085,
+  "startTime": 1723064283116,
   "success": true,
   "testResults": [
     {
@@ -18,7 +18,7 @@
           "fullName": " creates a count function",
           "status": "passed",
           "title": "creates a count function",
-          "duration": 8,
+          "duration": 6,
           "failureMessages": []
         },
         {
@@ -26,7 +26,7 @@
           "fullName": " creates a count starting from 10 with a step of 5",
           "status": "passed",
           "title": "creates a count starting from 10 with a step of 5",
-          "duration": 1,
+          "duration": 4,
           "failureMessages": []
         },
         {
@@ -34,12 +34,12 @@
           "fullName": " defaults to start 0, step 1 when no arguments passed",
           "status": "passed",
           "title": "defaults to start 0, step 1 when no arguments passed",
-          "duration": 1,
+          "duration": 5,
           "failureMessages": []
         }
       ],
-      "startTime": 1723061932651,
-      "endTime": 1723061932661,
+      "startTime": 1723064284157,
+      "endTime": 1723064284173,
       "status": "passed",
       "message": "",
       "name": "/Users/felipesilva/Flip/centered_counter/src/factory.test.ts"
@@ -51,7 +51,7 @@
           "fullName": " creates a count starting from -100 with a step of 50",
           "status": "passed",
           "title": "creates a count starting from -100 with a step of 50",
-          "duration": 8,
+          "duration": 9,
           "failureMessages": []
         },
         {
@@ -59,7 +59,7 @@
           "fullName": " creates a count starting from 100 with a step of -50",
           "status": "passed",
           "title": "creates a count starting from 100 with a step of -50",
-          "duration": 2,
+          "duration": 4,
           "failureMessages": []
         },
         {
@@ -67,7 +67,7 @@
           "fullName": " creates a count starting from 141592653589793 with a step of 141592653589793",
           "status": "passed",
           "title": "creates a count starting from 141592653589793 with a step of 141592653589793",
-          "duration": 1,
+          "duration": 5,
           "failureMessages": []
         },
         {
@@ -75,7 +75,7 @@
           "fullName": " creates a count starting from 0 with a step of 0",
           "status": "passed",
           "title": "creates a count starting from 0 with a step of 0",
-          "duration": 1,
+          "duration": 7,
           "failureMessages": []
         },
         {
@@ -83,7 +83,7 @@
           "fullName": " creates a count starting from 5 with a step of 0",
           "status": "passed",
           "title": "creates a count starting from 5 with a step of 0",
-          "duration": 1,
+          "duration": 4,
           "failureMessages": []
         },
         {
@@ -91,7 +91,7 @@
           "fullName": " when no first argument passed, defaults to start a count starting from 0 with a step of 5",
           "status": "passed",
           "title": "when no first argument passed, defaults to start a count starting from 0 with a step of 5",
-          "duration": 1,
+          "duration": 5,
           "failureMessages": []
         },
         {
@@ -103,8 +103,8 @@
           "failureMessages": []
         }
       ],
-      "startTime": 1723061932651,
-      "endTime": 1723061932666,
+      "startTime": 1723064284157,
+      "endTime": 1723064284197,
       "status": "passed",
       "message": "",
       "name": "/Users/felipesilva/Flip/centered_counter/src/proposed-factory.test.ts"

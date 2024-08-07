@@ -1,8 +1,8 @@
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-const FIRST_TEST_VALUES = ["3000", "-500", "2500"] as const,
-  SECOND_TEST_VALUES = ["-30000", "4500", "-25500"] as const;
+const FIRST_TEST_VALUES = ["3000", "-500", "2000"] as const,
+  SECOND_TEST_VALUES = ["-30000", "4500", "-21000"] as const;
 
 test.beforeEach(async ({ page }) => {
   await page.goto("https://filipedpsilva.github.io/demo/counter/");
@@ -46,13 +46,13 @@ test.describe("Input, result and visual tests", () => {
   // Misc
   const BACKGROUND_COLOR_RULE = "background-color";
 
-  test('the user should be able to fill both inputs and get a "2500" result when clicking the button', async ({
+  test('the user should be able to fill both inputs and get a "2000" result when clicking the button', async ({
     page,
   }) => {
     await fillFirstTestValues(page);
   });
 
-  test('after getting a "2500" result when clicking the button, the button should be "positive"', async ({
+  test('after getting a "2000" result when clicking the button, the button should be "positive"', async ({
     page,
   }) => {
     await fillFirstTestValues(page);
@@ -68,13 +68,13 @@ test.describe("Input, result and visual tests", () => {
     await expect(page.getByRole("button")).toHaveCSS(BACKGROUND_COLOR_RULE, GREENYELLOW_COLOR);
   });
 
-  test('the user should be able to fill both inputs and get a "-25500" result when pressing "Enter"', async ({
+  test('the user should be able to fill both inputs and get a "-21000" result when pressing "Enter"', async ({
     page,
   }) => {
     await fillSecondTestValues(page);
   });
 
-  test('after getting a "-25500" result when clicking the button, the button should be "negative"', async ({
+  test('after getting a "-21000" result when clicking the button, the button should be "negative"', async ({
     page,
   }) => {
     await fillSecondTestValues(page);
@@ -90,14 +90,14 @@ test.describe("Input, result and visual tests", () => {
     await expect(page.getByRole("button")).toHaveCSS(BACKGROUND_COLOR_RULE, RED_COLOR);
   });
 
-  test('the user should "Start at" with "10" and "Step" with "10" and NOT get "40" as result when clicking 2 times', async ({
+  test('the user should "Start at" with "10" and "Step" with "10" and NOT get "30" as result when clicking 2 times', async ({
     page,
   }) => {
     await page.getByLabel("Start at").fill("10");
     await page.getByLabel("Step").fill("10");
     await page.getByRole("button").click();
     await page.getByRole("button").click();
-    await expect(page.getByRole("button", { name: "40" })).not.toBeVisible();
+    await expect(page.getByRole("button", { name: "30" })).not.toBeVisible();
   });
 });
 
@@ -176,14 +176,14 @@ test.describe("Tests that are failing", () => {
 async function fillFirstTestValues(page: Page) {
   await page.getByLabel("Start at").fill(FIRST_TEST_VALUES[0]);
   await page.getByLabel("Step").fill(FIRST_TEST_VALUES[1]);
-  await page.getByRole("button", { name: "0" }).click();
+  await page.getByRole("button").click();
   await expect(page.getByRole("button", { name: FIRST_TEST_VALUES[2] })).toBeVisible();
 }
 
 async function fillSecondTestValues(page: Page) {
   await page.getByLabel("Start at").fill(SECOND_TEST_VALUES[0]);
   await page.getByLabel("Step").fill(SECOND_TEST_VALUES[1]);
-  await page.getByRole("button", { name: "0" }).press("Enter");
+  await page.getByRole("button").press("Enter");
   await expect(page.getByRole("button", { name: SECOND_TEST_VALUES[2] })).toBeVisible();
 }
 
